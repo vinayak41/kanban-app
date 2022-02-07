@@ -4,6 +4,9 @@ const config = require("./src/utils/config");
 const { errorHandler, unknownEndpoint } = require("./src/utils/middlewares");
 const cors = require("cors");
 const app = express();
+const usersRouter = require("./src/routes/user")
+
+
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb" }));
@@ -19,6 +22,8 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+
+  app.use("/api/users", usersRouter)
 
 app.listen(config.PORT, () => {
   console.log(`Server running on port number ${config.PORT}`);
