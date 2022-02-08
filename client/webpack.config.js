@@ -41,8 +41,8 @@ module.exports = {
         use: ["source-map-loader"],
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"],
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },

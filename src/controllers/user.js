@@ -45,6 +45,7 @@ const createUser = async (req, res, next) => {
 
 const login = async (req, res) => {
   const { usernameOrEmail, password } = req.body;
+  console.log({usernameOrEmail, password})
   try {
     const user = await User.findOne({
       $or: [
