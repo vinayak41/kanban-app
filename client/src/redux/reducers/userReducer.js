@@ -4,8 +4,13 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   SIGNUP_SUCCESS,
+  LOGIN_FAILED,
 } from "../actionTypeConstants/user";
-const initialState = { isAuthenticated: false, username: null, error: null };
+const initialState = {
+  isAuthenticated: undefined,
+  username: null,
+  error: null,
+};
 export default (state = initialState, action) => {
   switch (action.type) {
     case SIGNUP_REQUEST:
@@ -29,13 +34,17 @@ export default (state = initialState, action) => {
         error: null,
       };
     case LOGIN_SUCCESS:
-      console.log(action.payload)
       return {
         ...state,
         isAuthenticated: true,
         username: action.payload.user.username,
         fullname: action.payload.user.fullname,
-        id: action.payload.user.id
+        id: action.payload.user.id,
+      };
+    case LOGIN_FAILED:
+      return {
+        ...state,
+        isAuthenticated: false,
       };
     default:
       return state;

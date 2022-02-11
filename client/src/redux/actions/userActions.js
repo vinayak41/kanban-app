@@ -21,10 +21,9 @@ export const loginSuccess = (data) => {
   };
 };
 
-export const loginFailed = (data) => {
+export const loginFailed = () => {
   return {
     type: LOGIN_FAILED,
-    payload: data,
   };
 };
 export const signupRequest = (data) => {
