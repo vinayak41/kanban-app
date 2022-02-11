@@ -34,6 +34,7 @@ export default (state = initialState, action) => {
         ...state,
         isAuthenticated: true,
         username: action.payload.user.username,
+        fullname: action.payload.user.fullname,
         id: action.payload.user.id
       };
     default:

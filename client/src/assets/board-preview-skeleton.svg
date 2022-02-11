@@ -1,0 +1,61 @@
+<svg width="186" height="103" xmlns="http://www.w3.org/2000/svg" fill="none">
+
+ <mask height="14" width="53" y="27" x="67" maskUnits="userSpaceOnUse" mask-type="alpha" id="mask0">
+  <rect id="svg_1" fill="white" rx="1.31379" height="12.574" width="51.0468" y="27.5364" x="67.9799"/>
+ </mask>
+ <mask height="23" width="53" y="43" x="67" maskUnits="userSpaceOnUse" mask-type="alpha" id="mask1">
+  <rect id="svg_2" fill="white" rx="1.31379" height="22.8087" width="51.0468" y="43.0345" x="67.9799"/>
+ </mask>
+ <mask height="37" width="52" y="27" x="131" maskUnits="userSpaceOnUse" mask-type="alpha" id="mask2">
+  <rect id="svg_3" fill="white" rx="1.31379" height="35.3827" width="51.0468" y="27.8287" x="131.492"/>
+ </mask>
+ <mask height="12" width="52" y="67" x="131" maskUnits="userSpaceOnUse" mask-type="alpha" id="mask3">
+  <rect id="svg_4" fill="white" rx="1.31379" height="11.4044" width="51.0468" y="67.0129" x="131.195"/>
+ </mask>
+ <mask height="13" width="52" y="81" x="131" maskUnits="userSpaceOnUse" mask-type="alpha" id="mask4">
+  <rect id="svg_5" fill="white" rx="1.31379" height="11.4044" width="51.0468" y="81.9263" x="131.195"/>
+ </mask>
+ <mask height="37" width="52" y="59" x="4" maskUnits="userSpaceOnUse" mask-type="alpha" id="mask5">
+  <rect id="svg_6" fill="white" rx="1.31379" height="35.3827" width="51.0468" y="59.6907" x="4.39703"/>
+ </mask>
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_7" fill="#E3E3E3" rx="1.31379" height="54.8552" width="57.8728" y="14.3774" x="64.4185"/>
+  <rect id="svg_8" fill="white" rx="1.31379" height="12.574" width="51.0468" y="27.5364" x="67.9799"/>
+  <g id="svg_9" mask="url(#mask0)">
+   <path id="svg_10" fill="#E4E4E4" d="m70.651,32.5795c0,-0.3628 0.2941,-0.6569 0.6569,-0.6569l9.0736,0c0.3628,0 0.6569,0.2941 0.6569,0.6569l0,2.4877c0,0.3628 -0.2941,0.6569 -0.6569,0.6569l-9.0736,0c-0.3628,0 -0.6569,-0.2941 -0.6569,-0.6569l0,-2.4877z" clip-rule="evenodd" fill-rule="evenodd"/>
+  </g>
+  <rect id="svg_11" fill="white" rx="1.31379" height="22.8087" width="51.0468" y="43.0345" x="67.9799"/>
+  <g id="svg_12" mask="url(#mask1)">
+   <rect id="svg_13" fill="#E4E4E4" rx="0.6569" height="3.80145" width="38.5819" y="47.4208" x="70.651"/>
+   <rect id="svg_14" fill="#E4E4E4" rx="0.6569" height="3.80145" width="14.2456" y="54.1465" x="70.651"/>
+  </g>
+  <path id="svg_15" fill="white" d="m68.2767,20.0055c0,-0.3628 0.2941,-0.6569 0.6569,-0.6569l21.8353,0c0.3628,0 0.6569,0.2941 0.6569,0.6569l0,3.0725c0,0.3628 -0.2941,0.6569 -0.6569,0.6569l-21.8353,0c-0.3628,0 -0.6569,-0.2941 -0.6569,-0.6569l0,-3.0725z" clip-rule="evenodd" fill-rule="evenodd"/>
+  <rect id="svg_16" fill="#E3E3E3" rx="1.31379" height="84.2168" width="57.8728" y="14.3774" x="127.93"/>
+  <rect id="svg_17" fill="white" rx="1.31379" height="35.3827" width="51.0468" y="27.8287" x="131.492"/>
+  <g id="svg_18" mask="url(#mask2)">
+   <rect id="svg_19" fill="#F1F1F1" height="27.0612" width="55.3861" y="26.6929" x="131.51"/>
+   <path id="svg_20" fill="#E4E4E4" d="m134.163,57.1427c0,-0.3628 0.294,-0.6569 0.657,-0.6569l10.854,0c0.363,0 0.657,0.2941 0.657,0.6569l0,2.4877c0,0.3628 -0.294,0.6569 -0.657,0.6569l-10.854,0c-0.363,0 -0.657,-0.2941 -0.657,-0.6569l0,-2.4877z" clip-rule="evenodd" fill-rule="evenodd"/>
+  </g>
+  <rect id="svg_21" fill="white" rx="1.31379" height="11.4044" width="51.0468" y="67.0129" x="131.195"/>
+  <g id="svg_22" mask="url(#mask3)"/>
+  <rect id="svg_23" fill="#E4E4E4" rx="0.6569" height="3.80145" width="19.2909" y="70.8143" x="133.866"/>
+  <rect id="svg_24" fill="white" rx="1.31379" height="11.4044" width="51.0468" y="81.9263" x="131.195"/>
+  <g id="svg_25" mask="url(#mask4)"/>
+  <rect id="svg_26" fill="#E4E4E4" rx="0.6569" height="3.80145" width="13.3553" y="85.7277" x="133.866"/>
+  <path id="svg_27" fill="white" d="m131.788,20.0055c0,-0.3628 0.294,-0.6569 0.657,-0.6569l13.822,0c0.363,0 0.657,0.2941 0.657,0.6569l0,3.0725c0,0.3628 -0.294,0.6569 -0.657,0.6569l-13.822,0c-0.363,0 -0.657,-0.2941 -0.657,-0.6569l0,-3.0725z" clip-rule="evenodd" fill-rule="evenodd"/>
+  <rect id="svg_28" fill="#E3E3E3" rx="1.31379" height="85.9713" width="57.8728" y="14.3774" x="0.90686"/>
+  <rect id="svg_29" fill="white" rx="1.31379" height="12.2816" width="51.0468" y="27.8287" x="4.46826"/>
+  <rect id="svg_30" fill="#E4E4E4" rx="0.6569" height="3.80145" width="25.8202" y="31.9226" x="7.13928"/>
+  <rect id="svg_31" fill="white" rx="1.31379" height="12.2816" width="51.0468" y="43.9119" x="4.46826"/>
+  <rect id="svg_32" fill="#E4E4E4" rx="0.6569" height="3.80145" width="19.5877" y="48.0057" x="7.13928"/>
+  <rect id="svg_33" fill="#E4E4E4" rx="0.6569" height="3.80145" width="13.3553" y="87.7747" x="6.84247"/>
+  <rect id="svg_34" fill="white" rx="1.31379" height="35.3827" width="51.0468" y="59.6907" x="4.39703"/>
+  <g id="svg_35" mask="url(#mask5)">
+   <rect id="svg_36" fill="#F1F1F1" height="27.0612" width="55.3861" y="58.5548" x="4.41547"/>
+   <rect id="svg_37" fill="#E4E4E4" rx="0.6569" height="3.80145" width="12.1681" y="88.3478" x="7.06805"/>
+  </g>
+  <rect id="svg_38" fill="white" rx="0.6569" height="4.38629" width="14.2456" y="19.3486" x="4.76501"/>
+  <path stroke="null" id="svg_39" fill="white" d="m130.55432,-36.71649c-2.29161,0 -4.14909,0.6079 -4.14909,1.35707l0,8.14187c0,0.74947 1.8584,1.35707 4.14909,1.35707l24.89213,0c2.29161,0 4.14909,-0.6079 4.14909,-1.35707l0,-8.14187c0,-0.74949 -1.8584,-1.35707 -4.14909,-1.35707l-24.89213,0zm16.59455,1.41128c-1.0996,0 -1.99095,0.29161 -1.99095,0.65167l0,3.47332c0,0.35991 0.89165,0.65166 1.99095,0.65166l6.14126,0c1.09929,0 1.99095,-0.29161 1.99095,-0.65166l0,-3.47332c0,-0.35991 -0.89196,-0.65167 -1.99095,-0.65167l-6.14126,0zm-14.43792,0c-1.0996,0 -1.99095,0.29135 -1.99095,0.65165l0,6.18737c0,0.35989 0.89165,0.65164 1.99095,0.65164l6.14126,0c1.0996,0 1.99095,-0.29134 1.99095,-0.65164l0,-6.18737c0,-0.35989 -0.89165,-0.65165 -1.99095,-0.65165l-6.14126,0z" clip-rule="evenodd" fill-rule="evenodd"/>
+ </g>
+</svg>

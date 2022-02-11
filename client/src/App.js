@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "./redux/actions/userActions";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
+import "./app.css"
 
 const App = () => {
   const dispatch = useDispatch();

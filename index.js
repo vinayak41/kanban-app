@@ -4,8 +4,8 @@ const config = require("./src/utils/config");
 const { errorHandler, unknownEndpoint } = require("./src/utils/middlewares");
 const cors = require("cors");
 const app = express();
-const usersRouter = require("./src/routes/user")
-
+const usersRouter = require("./src/routes/user");
+const boardRouter = require("./src/routes/board");
 
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
@@ -23,7 +23,12 @@ mongoose
     console.log(error);
   });
 
-  app.use("/api/users", usersRouter)
+app.use("/api/users", usersRouter);
+app.use("/api/boards", boardRouter);
+
+
+app.use(unknownEndpoint);
+app.use(errorHandler)
 
 app.listen(config.PORT, () => {
   console.log(`Server running on port number ${config.PORT}`);

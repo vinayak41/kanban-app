@@ -32,10 +32,6 @@ module.exports = {
         use: ["file-loader"],
       },
       {
-        test: /\.svg$/,
-        use: ["@svgr/webpack"],
-      },
-      {
         test: /\.(js|jsx)$/,
         enforce: "pre",
         use: ["source-map-loader"],

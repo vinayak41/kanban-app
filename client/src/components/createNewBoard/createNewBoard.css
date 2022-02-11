@@ -1,0 +1,60 @@
+.board-preview {
+  width: 9rem;
+  height: 5rem;
+  padding: 1rem;
+  margin: auto;
+  background-size: cover;
+  border-radius: 3px;
+}
+.board-preview img {
+  width: 100%;
+  margin-top: -7px;
+}
+
+.background-images {
+  display: flex;
+}
+
+.bg-image-container {
+  width: 25%;
+  background-size: cover;
+  height: 4rem;
+  margin: 5px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bg-image-container .selected {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.585);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-colors {
+  display: flex;
+}
+
+.bg-color-container {
+  width: 20%;
+  height: 3rem;
+  margin: 5px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check-mark * {
+  stroke: white;
+  position: absolute;
+}
+
+.board-title-input-wrapper {
+  margin-top: 1rem;
+}
+.board-title-input-wrapper span {
+  margin-bottom: 1rem;
+}

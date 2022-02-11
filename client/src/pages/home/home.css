@@ -1,0 +1,22 @@
+.home-container {
+  margin: 0 5vw;
+}
+
+.home-container .board {
+  width: 15rem;
+  height: 7rem;
+  color: white !important;
+  background-size: cover;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 10px;
+}
+.home-container .board * {
+  color: white !important;
+}
+
+.home-container .your-boards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
