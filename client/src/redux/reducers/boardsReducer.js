@@ -3,20 +3,14 @@ import {
   SET_CREATED_BOARD,
 } from "../actionTypeConstants/board";
 
-const initialState = { all: [], current: null };
+const initialState = [];
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_CREATED_BOARD:
-      return {
-        ...state,
-        all: [...state.all, action.payload],
-      };
+      return [...state, action.payload];
     case SET_ALL_BOARDS:
-      return {
-        ...state,
-        all: action.payload,
-      };
+      return [...action.payload];
     default:
       return state;
   }

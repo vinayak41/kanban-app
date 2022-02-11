@@ -6,12 +6,13 @@ import { generateGreetings } from "../../utils/helper";
 import CreateNewBoard from "../../components/createNewBoard/CreateNewBoard";
 import { getAllBoards } from "../../redux/actions/boardActions";
 import bgImages from "../../assets/backgroundImages/bgImages";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { Title, Paragraph } = Typography;
   const { fullname } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const { all: allBoards } = useSelector((state) => state.boards);
+  const allBoards = useSelector((state) => state.boards);
 
   useEffect(() => {
     dispatch(getAllBoards());
@@ -21,29 +22,32 @@ const Home = () => {
     <div className="home-container">
       <Title type="h1">Kanban</Title>
       <Paragraph>{`${generateGreetings()} ${
-        fullname.split(" ")[0]
+        fullname?.split(" ")[0]
       }!`}</Paragraph>
       <CreateNewBoard />
-      <Title level={4} style={{marginTop: "1rem"}}>Your boards</Title>
+      <Title level={4} style={{ marginTop: "1rem" }}>
+        Your boards
+      </Title>
       <div className="your-boards">
         {allBoards?.map((board) => (
-          <div
-            key={board._id}
-            className="board"
-            style={
-              board.background?.image
-                ? {
-                    backgroundImage: `url(${
-                      bgImages.find(
-                        (image) => image.id == board.background.image
-                      )?.src
-                    })`,
-                  }
-                : { backgroundColor: board.background.color }
-            }
-          >
-            <Title level={5}>{board.title}</Title>
-          </div>
+          <Link to={`/boards/${board._id}`} key={board._id}>
+            <div
+              className="board"
+              style={
+                board.background?.image
+                  ? {
+                      backgroundImage: `url(${
+                        bgImages.find(
+                          (image) => image.id == board.background.image
+                        )?.src
+                      })`,
+                    }
+                  : { backgroundColor: board.background.color }
+              }
+            >
+              <Title level={5}>{board.title}</Title>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

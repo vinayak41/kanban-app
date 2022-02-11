@@ -2,8 +2,16 @@ import axios from "axios";
 import { call, put, take, takeEvery } from "redux-saga/effects";
 import { BOARD_API } from "../../utils/api";
 import { getToken } from "../../utils/helper";
-import { setAllBoards, setCreatedBoard } from "../actions/boardActions";
-import { CREATE_BOARD, GET_ALL_BOARDS } from "../actionTypeConstants/board";
+import {
+  setAllBoards,
+  setBoard,
+  setCreatedBoard,
+} from "../actions/boardActions";
+import {
+  CREATE_BOARD,
+  GET_ALL_BOARDS,
+  GET_BOARD,
+} from "../actionTypeConstants/board";
 
 function* createBoard(action) {
   try {
@@ -38,7 +46,24 @@ function* getAllBoards(action) {
   }
 }
 
+function* getBoard(action) {
+  try {
+    const token = yield call(getToken);
+    const response = yield call(axios, {
+      method: "GET",
+      url: `${BOARD_API}/${action.payload}`,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    yield put(setBoard(response.data));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default function* boardSaga() {
   yield takeEvery(CREATE_BOARD, createBoard);
   yield takeEvery(GET_ALL_BOARDS, getAllBoards);
+  yield takeEvery(GET_BOARD, getBoard);
 }
