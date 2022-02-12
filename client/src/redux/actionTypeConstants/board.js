@@ -5,3 +5,6 @@ export const SET_ALL_BOARDS = "SET_ALL_BOARDS";
 
 export const GET_BOARD = "GET_BOARD";
 export const SET_BOARD = "SET_BOARD";
+
+export const CREATE_LIST = "CREATE_LIST";
+export const SET_LIST = "SET_LIST";

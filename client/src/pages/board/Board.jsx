@@ -5,6 +5,8 @@ import { getBoard } from "../../redux/actions/boardActions";
 import { Typography } from "antd";
 import "./board.css";
 import bgImages from "../../assets/backgroundImages/bgImages";
+import AddList from "../../components/board/addList/AddList";
+import List from "../../components/board/list/List";
 const Board = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -36,6 +38,12 @@ const Board = () => {
           }
         >
           <Title level={2}>{board.title}</Title>
+          <div className="lists-container">
+            {board.lists.map((list) => (
+              <List key={list._id} list={list} />
+            ))}
+            <AddList boardId={params.boardId} index={board.lists.length} />
+          </div>
         </div>
       )}
     </>

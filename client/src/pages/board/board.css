@@ -11,3 +11,7 @@
   background-size: cover;
   padding: 0 3vw;
 }
+
+.lists-container {
+  display: flex;
+}

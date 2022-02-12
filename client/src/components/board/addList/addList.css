@@ -1,0 +1,28 @@
+.add-list-button {
+  width: 15rem;
+  border-radius: 3px;
+  background-color: #ffffff3d;
+  padding: 6px 8px;
+  color: white;
+  font-size: 16px;
+}
+
+.add-list-form {
+  width: 15rem;
+  padding: 4px;
+  background: #eaecf1;
+  border-radius: 3px;
+}
+
+.add-list-form input {
+  border-radius: 3px !important;
+}
+
+.add-list-form .close-button {
+  margin-top: 5px;
+  padding: 4px 8px;
+  background-color: transparent;
+  border: none;
+  padding-top: 3px;
+  border-radius: 50%;
+}
