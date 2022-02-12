@@ -8,3 +8,6 @@ export const SET_BOARD = "SET_BOARD";
 
 export const CREATE_LIST = "CREATE_LIST";
 export const SET_LIST = "SET_LIST";
+
+export const CREATE_CARD = "CREATE_CARD";
+export const SET_CARD = "SET_CARD";

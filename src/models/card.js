@@ -5,6 +5,8 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  index: { type: Number, required: true },
+  list: { type: mongoose.Schema.Types.ObjectId, ref: "List", required: true },
 });
 
-module.exports("Card", cardSchema);
+module.exports = mongoose.model("Card", cardSchema);

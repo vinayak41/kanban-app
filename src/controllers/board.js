@@ -30,7 +30,10 @@ const getBoard = async (req, res, next) => {
     if (!isValidObjectId(req.params.boardId)) {
       return res.status(400).json({ error: "invalid id" });
     }
-    const board = await Board.findById(ObjectId(req.params.boardId)).populate("lists");
+    const board = await Board.findById(ObjectId(req.params.boardId)).populate({
+      path: "lists",
+      populate: { path: "cards" },
+    });
     if (board) {
       return res.json(board);
     }

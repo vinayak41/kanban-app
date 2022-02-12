@@ -1,10 +1,12 @@
 import {
   CREATE_BOARD,
+  CREATE_CARD,
   CREATE_LIST,
   GET_ALL_BOARDS,
   GET_BOARD,
   SET_ALL_BOARDS,
   SET_BOARD,
+  SET_CARD,
   SET_CREATED_BOARD,
   SET_LIST,
 } from "../actionTypeConstants/board";
@@ -62,5 +64,19 @@ export const setList = (list) => {
   return {
     type: SET_LIST,
     payload: list,
+  };
+};
+
+export const createCard = (data) => {
+  return {
+    type: CREATE_CARD,
+    payload: data,
+  };
+};
+
+export const setCard = (card) => {
+  return {
+    type: SET_CARD,
+    payload: card,
   };
 };

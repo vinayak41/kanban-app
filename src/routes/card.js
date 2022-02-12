@@ -1,8 +1,8 @@
 const express = require("express");
-const { createList } = require("../controllers/list");
+const { createCard } = require("../controllers/card");
 const { requireLogin } = require("../utils/middlewares");
 const router = express.Router();
 
-router.post("/", requireLogin, createList)
+router.post("/", requireLogin, createCard);
 
-module.exports = router
+module.exports = router;

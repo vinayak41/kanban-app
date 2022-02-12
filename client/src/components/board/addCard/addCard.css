@@ -1,0 +1,27 @@
+.add-card-button {
+  width: 100%;
+  border-radius: 3px;
+  padding: 6px 8px;
+  font-size: 16px;
+  color: #5E6C84;
+}
+
+.add-card-form {
+  width: 100%;
+  padding: 4px;
+  background: #eaecf1;
+  border-radius: 3px;
+}
+
+.add-card-form input {
+  border-radius: 3px !important;
+}
+
+.add-card-form .close-button {
+  margin-top: 5px;
+  padding: 4px 8px;
+  background-color: transparent;
+  border: none;
+  padding-top: 3px;
+  border-radius: 50%;
+}
