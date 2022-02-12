@@ -6,6 +6,7 @@ const cors = require("cors");
 const app = express();
 const usersRouter = require("./src/routes/user");
 const boardRouter = require("./src/routes/board");
+const listRouter = require("./src/routes/list")
 
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
@@ -25,6 +26,7 @@ mongoose
 
 app.use("/api/users", usersRouter);
 app.use("/api/boards", boardRouter);
+app.use("/api/lists", listRouter)
 
 
 app.use(unknownEndpoint);
