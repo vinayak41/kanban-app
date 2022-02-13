@@ -1,4 +1,19 @@
- * {
-   box-sizing: border-box;
-   margin: 0;
- }
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #BFC4CE; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 0px solid transparent; /* creates padding around scroll thumb */
+}

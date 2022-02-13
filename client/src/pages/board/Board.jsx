@@ -37,7 +37,7 @@ const Board = () => {
               : { backgroundColor: board.background.color }
           }
         >
-          <Title level={2}>{board.title}</Title>
+          <Title className="board-title" level={2}>{board.title}</Title>
           <div className="lists-container">
             {board.lists.map((list) => (
               <List key={list._id} list={list} />

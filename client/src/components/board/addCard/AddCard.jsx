@@ -35,7 +35,7 @@ const AddCard = ({ listId, index }) => {
         </div>
       ) : (
         <div className="add-card-form">
-          <Input onChange={handleListTitleChange} value={cardTitle} />
+          <Input autoFocus onChange={handleListTitleChange} value={cardTitle} />
           <Button
             type="primary"
             style={{ marginTop: "5px", borderRadius: "3px" }}

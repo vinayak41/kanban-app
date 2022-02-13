@@ -36,7 +36,7 @@ const AddList = ({ boardId, index }) => {
         </div>
       ) : (
         <div className="add-list-form">
-          <Input onChange={handleListTitleChange} value={listTitle} />
+          <Input autoFocus onChange={handleListTitleChange} value={listTitle} />
           <Button
             type="primary"
             style={{ marginTop: "5px", borderRadius: "3px" }}

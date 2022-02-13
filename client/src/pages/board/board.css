@@ -10,8 +10,25 @@
   height: 100vh;
   background-size: cover;
   padding: 0 3vw;
+  overflow-y: hidden;
+}
+
+.board-container .board-title {
+  background-color: #ffffff3d;
+  display: inline-block;
+  padding: 0px 15px;
+  border-radius: 3px;
+  margin-top: 6px;
+  font-size: 20px;
+  height: 2rem;
+  color: white;
 }
 
 .lists-container {
   display: flex;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  max-height: 100%;
+  height: calc(100vh - 3.5rem);
 }
