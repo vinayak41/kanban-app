@@ -5,7 +5,7 @@ const createCard = async (req, res, next) => {
   try {
     const newCard = new Card({
       title: req.body.title,
-      index: req.body.index,
+      position: req.body.position,
       createdBy: req.userId,
       list: req.body.listId,
     });

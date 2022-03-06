@@ -15,6 +15,7 @@ import {
   CREATE_LIST,
   GET_ALL_BOARDS,
   GET_BOARD,
+  UPDATE_LIST_POSITION,
 } from "../actionTypeConstants/board";
 
 function* createBoard(action) {
@@ -92,11 +93,27 @@ function* createCard(action) {
       data: action.payload,
       headers: {
         authorization: `Bearer ${token}`,
-      }, 
+      },
     });
-    yield put(setCard(response.data))
+    yield put(setCard(response.data));
   } catch (error) {
-    console.log(error)
+    console.log(error);
+  }
+}
+
+function* updateListPosition(action) {
+  try {
+    const token = yield call(getToken);
+    const response = yield call(axios, {
+      method: "PATCH",
+      url: `${LIST_API}/${action.payload.listId}`,
+      data: { position: action.payload.position },
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -105,5 +122,6 @@ export default function* boardSaga() {
   yield takeEvery(GET_ALL_BOARDS, getAllBoards);
   yield takeEvery(GET_BOARD, getBoard);
   yield takeEvery(CREATE_LIST, createList);
-  yield takeEvery(CREATE_CARD, createCard)
+  yield takeEvery(CREATE_CARD, createCard);
+  yield takeEvery(UPDATE_LIST_POSITION, updateListPosition);
 }

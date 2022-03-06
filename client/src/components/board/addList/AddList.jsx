@@ -6,21 +6,23 @@ import { CgClose } from "react-icons/CG";
 import { useDispatch } from "react-redux";
 import { createList } from "../../../redux/actions/boardActions";
 
-const AddList = ({ boardId, index }) => {
-  console.log({ boardId, index });
+const AddList = ({ boardId, position }) => {
   const [active, setActive] = useState(false);
   const [listTitle, setListTitle] = useState("");
   const dispatch = useDispatch();
+
   const handleButtonClick = () => {
     setActive(true);
   };
+
   const handleClose = () => {
     setActive(false);
   };
+
   const handleAddList = () => {
     if (listTitle) {
-      dispatch(createList({title: listTitle, index, boardId}))
-      setListTitle("")
+      dispatch(createList({ title: listTitle, position, boardId }));
+      setListTitle("");
       handleClose();
     }
   };
@@ -28,6 +30,7 @@ const AddList = ({ boardId, index }) => {
   const handleListTitleChange = (event) => {
     setListTitle(event.target.value);
   };
+
   return (
     <>
       {!active ? (

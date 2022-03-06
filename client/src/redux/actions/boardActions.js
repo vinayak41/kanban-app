@@ -9,6 +9,7 @@ import {
   SET_CARD,
   SET_CREATED_BOARD,
   SET_LIST,
+  UPDATE_LIST_POSITION,
 } from "../actionTypeConstants/board";
 
 export const createBoard = (boardData) => {
@@ -78,5 +79,12 @@ export const setCard = (card) => {
   return {
     type: SET_CARD,
     payload: card,
+  };
+};
+
+export const updateListPositon = (listId, position) => {
+  return {
+    type: UPDATE_LIST_POSITION,
+    payload: { listId, position },
   };
 };

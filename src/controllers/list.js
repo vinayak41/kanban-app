@@ -1,13 +1,12 @@
 const List = require("../models/list");
 const Board = require("../models/board");
 const mongoose = require("mongoose");
-const ObjectId = mongoose.Types.ObjectId;
 
 const createList = async (req, res, next) => {
   try {
     const newList = new List({
       title: req.body.title,
-      index: req.body.index,
+      position: req.body.position,
       board: req.body.boardId,
       createdBy: req.userId,
     });

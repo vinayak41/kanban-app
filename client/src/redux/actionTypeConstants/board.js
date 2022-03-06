@@ -11,3 +11,5 @@ export const SET_LIST = "SET_LIST";
 
 export const CREATE_CARD = "CREATE_CARD";
 export const SET_CARD = "SET_CARD";
+
+export const UPDATE_LIST_POSITION = "UPDATE_LIST_POSITION";

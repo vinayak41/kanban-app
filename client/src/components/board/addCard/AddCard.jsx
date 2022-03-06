@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import "./addCard.css";
 import { createCard } from "../../../redux/actions/boardActions";
 
-const AddCard = ({ listId, index }) => {
+const AddCard = ({ listId, position }) => {
   const [active, setActive] = useState(false);
   const [cardTitle, setCardTitle] = useState("");
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const AddCard = ({ listId, index }) => {
   };
   const handleAddCard = () => {
     if (cardTitle) {
-      dispatch(createCard({ title: cardTitle, listId, index }));
+      dispatch(createCard({ title: cardTitle, listId, position }));
       setCardTitle("");
       handleClose();
     }

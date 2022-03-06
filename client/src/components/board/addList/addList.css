@@ -1,10 +1,11 @@
 .add-list-button {
-  width: 15rem;
+  min-width: 15rem;
   border-radius: 3px;
   background-color: #ffffff3d;
   padding: 6px 8px;
   color: white;
   font-size: 16px;
+  margin-left: 5px;
 }
 
 .add-list-form {

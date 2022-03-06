@@ -5,7 +5,7 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  index: { type: Number, required: true },
+  position: { type: Number, required: true },
   list: { type: mongoose.Schema.Types.ObjectId, ref: "List", required: true },
 });
 
