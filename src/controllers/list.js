@@ -23,11 +23,12 @@ const createList = async (req, res, next) => {
 
 const updateList = async (req, res, next) => {
   try {
-    await List.findOneAndUpdate(
-      { id: req.params.listId },
-      { $set: { position: req.body.position } }
+    const newList = await List.findByIdAndUpdate(
+      req.params.listId,
+      { $set: { position: req.body.position } },
+      { new: true }
     );
-    res.json({ message: "ok" });
+    res.json({ newList });
   } catch (error) {
     next(error);
   }

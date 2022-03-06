@@ -16,47 +16,79 @@ const Board = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const board = useSelector((state) => state.board);
+  const lists = board?.lists?.sort(comparePosition);
   const { Title } = Typography;
 
   const moveList = (sourceIndex, destinationIndex, draggableId) => {
     let newPosition;
-    console.log(destinationIndex, draggableId);
-    // const sourceCard = board.lists[sourceIndex];
-    // const destinationCard = board.lists[destinationIndex];
-
-    if (destinationIndex === board.lists.length - 1) {
+    if (destinationIndex === lists.length - 1) {
       //last position
-      newPosition = board.lists[destinationIndex].position + 100;
+      newPosition = lists[destinationIndex].position + 100;
     } else if (destinationIndex === 0) {
       //first position
-      newPosition = board.lists[0].position / 2;
+      newPosition = lists[0].position / 2;
     } else {
       //postion anywhere between first and last
       if (sourceIndex < destinationIndex) {
         //move forward
         newPosition =
-          (board.lists[destinationIndex].position +
-            board.lists[destinationIndex + 1].position) /
+          (lists[destinationIndex].position +
+            lists[destinationIndex + 1].position) /
           2;
       } else {
         //move backward
         newPosition =
-          (board.lists[destinationIndex].position +
-            board.lists[destinationIndex - 1].position) /
+          (lists[destinationIndex].position +
+            lists[destinationIndex - 1].position) /
           2;
       }
     }
-    console.log(newPosition);
-    dispatch(updateListPositon(draggableId, newPosition))
+    console.log(draggableId, newPosition)
+    dispatch(updateListPositon(draggableId, newPosition));
   };
 
-  const handleDragEnd = ({ destination, source, type, draggableId }) => {
+  const moveCard = (source, destination, draggableId) => {
+    let newPosition;
+    console.log(source, destination, draggableId);
+
+    if (destinationIndex === lists.length - 1) {
+      //last position
+      // newPosition = board.lists[destinationIndex].position + 100;
+      newPosition = board.list;
+    } else if (destinationIndex === 0) {
+      //first position
+      // newPosition = board.lists[0].position / 2;
+    } else {
+      //postion anywhere between first and last
+      if (sourceIndex < destinationIndex) {
+        //move forward
+        // newPosition =
+        //   (board.lists[destinationIndex].position +
+        //     board.lists[destinationIndex + 1].position) /
+        //   2;
+      } else {
+        //move backward
+        // newPosition =
+        //   (board.lists[destinationIndex].position +
+        //     board.lists[destinationIndex - 1].position) /
+        //   2;
+      }
+    }
+  };
+
+  const handleDragEnd = ({
+    destination,
+    source,
+    type,
+    draggableId,
+    ...rest
+  }) => {
+    console.log(rest, destination, source);
     if (destination && source && !object_equals(destination, source)) {
       if (type === "list") {
-        console.log("move list");
         moveList(source.index, destination.index, draggableId);
       } else if (type === "card") {
-        console.log("move card");
+        // moveCard(source, destination, draggableId);
       }
     }
   };
@@ -97,7 +129,7 @@ const Board = () => {
                     {...provided.droppableProps}
                     ref={provided.innerRef}
                   >
-                    {board.lists.sort(comparePosition).map((list, index) => (
+                    {lists.map((list, index) => (
                       <List key={list._id} list={list} index={index} />
                     ))}
                     {/* {provided.placeholder} */}
@@ -106,9 +138,9 @@ const Board = () => {
                       //for first list position will be 1000
                       //otherwise position for new list will be postion of previous list + 100
                       position={
-                        !board.lists.length
+                        !lists.length
                           ? 1000
-                          : board.lists[board.lists.length - 1].position + 100
+                          : lists[lists.length - 1].position + 100
                       }
                     />
                   </div>
