@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getBoard, updateListPositon } from "../../redux/actions/boardActions";
+import {
+  getBoard,
+  updateCardPosition,
+  updateListPositon,
+} from "../../redux/actions/boardActions";
 import { Typography } from "antd";
 import "./board.css";
 import bgImages from "../../assets/backgroundImages/bgImages";
@@ -16,8 +20,12 @@ const Board = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const board = useSelector((state) => state.board);
-  const lists = board?.lists?.sort(comparePosition);
   const { Title } = Typography;
+
+  //sort list and cards according position
+  const lists = board?.lists
+    ?.sort(comparePosition)
+    .map((list) => ({ ...list, cards: list.cards.sort(comparePosition) }));
 
   const moveList = (sourceIndex, destinationIndex, draggableId) => {
     let newPosition;
@@ -43,52 +51,52 @@ const Board = () => {
           2;
       }
     }
-    console.log(draggableId, newPosition)
     dispatch(updateListPositon(draggableId, newPosition));
   };
 
   const moveCard = (source, destination, draggableId) => {
+    const destinationList = lists.find(
+      (list) => list._id === destination.droppableId
+    );
     let newPosition;
-    console.log(source, destination, draggableId);
-
-    if (destinationIndex === lists.length - 1) {
-      //last position
-      // newPosition = board.lists[destinationIndex].position + 100;
-      newPosition = board.list;
-    } else if (destinationIndex === 0) {
-      //first position
-      // newPosition = board.lists[0].position / 2;
+    if (destinationList.cards.length === 0) {
+      //move card in empty list
+      console.log(1);
+      newPosition = 1000;
+    } else if (destination.index === 0) {
+      console.log(2);
+      //move at position first in list
+      newPosition = destinationList.cards[0].position / 2;
+    } else if (destination.index >= destinationList.cards.length) {
+      console.log(3);
+      //move at last position in list
+      newPosition =
+        destinationList.cards[destinationList.cards.length - 1].position + 100;
     } else {
-      //postion anywhere between first and last
-      if (sourceIndex < destinationIndex) {
-        //move forward
-        // newPosition =
-        //   (board.lists[destinationIndex].position +
-        //     board.lists[destinationIndex + 1].position) /
-        //   2;
-      } else {
-        //move backward
-        // newPosition =
-        //   (board.lists[destinationIndex].position +
-        //     board.lists[destinationIndex - 1].position) /
-        //   2;
-      }
+      console.log(4);
+      //move card anywhere between first and last position
+      newPosition =
+        (destinationList.cards[destination.index].position +
+          destinationList.cards[destination.index - 1].position) /
+        2;
     }
+    console.log(newPosition);
+    dispatch(
+      updateCardPosition(
+        draggableId,
+        source.droppableId,
+        destination.droppableId,
+        newPosition
+      )
+    );
   };
 
-  const handleDragEnd = ({
-    destination,
-    source,
-    type,
-    draggableId,
-    ...rest
-  }) => {
-    console.log(rest, destination, source);
+  const handleDragEnd = ({ destination, source, type, draggableId }) => {
     if (destination && source && !object_equals(destination, source)) {
       if (type === "list") {
         moveList(source.index, destination.index, draggableId);
       } else if (type === "card") {
-        // moveCard(source, destination, draggableId);
+        moveCard(source, destination, draggableId);
       }
     }
   };

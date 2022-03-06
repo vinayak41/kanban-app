@@ -21,4 +21,25 @@ const createCard = async (req, res, next) => {
   }
 };
 
-module.exports = { createCard };
+const updateCard = async (req, res, next) => {
+  try {
+    const cardId = req.params.cardId;
+    const sourceListId = req.body.sourceListId;
+    const destinationListId = req.body.destinationListId;
+    await Card.findByIdAndUpdate(cardId, {
+      $set: { position: req.body.position, list: destinationListId },
+    });
+
+    await List.findByIdAndUpdate(destinationListId, {
+      $push: { cards: cardId },
+    });
+
+    await List.findByIdAndUpdate(sourceListId, { $pull: { cards: cardId } });
+
+    res.json({ message: "ok" });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { createCard, updateCard };
