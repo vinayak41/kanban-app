@@ -21,4 +21,16 @@ const createList = async (req, res, next) => {
   }
 };
 
-module.exports = { createList };
+const updateList = async (req, res, next) => {
+  try {
+    await List.findOneAndUpdate(
+      { id: req.params.listId },
+      { $set: { position: req.body.position } }
+    );
+    res.json({ message: "ok" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { createList, updateList };
