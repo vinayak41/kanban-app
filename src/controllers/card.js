@@ -30,11 +30,11 @@ const updateCard = async (req, res, next) => {
       $set: { position: req.body.position, list: destinationListId },
     });
 
+    await List.findByIdAndUpdate(sourceListId, { $pull: { cards: cardId } });
+    
     await List.findByIdAndUpdate(destinationListId, {
       $push: { cards: cardId },
     });
-
-    await List.findByIdAndUpdate(sourceListId, { $pull: { cards: cardId } });
 
     res.json({ message: "ok" });
   } catch (error) {

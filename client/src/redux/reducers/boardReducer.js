@@ -42,18 +42,20 @@ export default (state = initialState, action) => {
         ...state,
         lists:
           action.payload.sourceListId === action.payload.destinationListId
-            ? state.lists.map((list) =>
-                list._id === action.payload.sourceListId
+            ? state.lists.map((list) => {
+              console.log(list._id === action.payload.sourceListId)
+                return list._id === action.payload.sourceListId
                   ? {
                       ...list,
-                      cards: list.cards.map((card) =>
-                        card._id
-                          ? { ...card, position: action.payload.position }
-                          : card
-                      ),
+                      cards: list.cards
+                        .map((card) =>
+                          card._id === cardToMove._id
+                            ? { ...card, position: action.payload.position }
+                            : card
+                        )
                     }
-                  : list
-              )
+                  : list;
+              })
             : state.lists.map((list) =>
                 list._id === action.payload.sourceListId
                   ? {
