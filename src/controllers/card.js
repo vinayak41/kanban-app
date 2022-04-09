@@ -26,15 +26,25 @@ const updateCard = async (req, res, next) => {
     const cardId = req.params.cardId;
     const sourceListId = req.body.sourceListId;
     const destinationListId = req.body.destinationListId;
-    await Card.findByIdAndUpdate(cardId, {
-      $set: { position: req.body.position, list: destinationListId },
-    });
+    const { position, title } = req.body;
 
-    await List.findByIdAndUpdate(sourceListId, { $pull: { cards: cardId } });
-    
-    await List.findByIdAndUpdate(destinationListId, {
-      $push: { cards: cardId },
-    });
+    if (position) {
+      await Card.findByIdAndUpdate(cardId, {
+        $set: { position: position, list: destinationListId },
+      });
+
+      await List.findByIdAndUpdate(sourceListId, { $pull: { cards: cardId } });
+
+      await List.findByIdAndUpdate(destinationListId, {
+        $push: { cards: cardId },
+      });
+    }
+
+    if (title) {
+      await Card.findByIdAndUpdate(cardId, {
+        $set: { title: title },
+      });
+    }
 
     res.json({ message: "ok" });
   } catch (error) {

@@ -3,6 +3,30 @@
   background-color: white;
   margin-bottom: 5px;
   border-radius: 3px;
-  padding: 7px 5px;
   box-shadow: 0 1px 0 #091e4240;
+  position: relative;
+}
+
+.card>div {
+  padding: 7px 5px;
+}
+
+.editIcon {
+  color: #304361;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 3px;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  display: none;
+}
+
+.card:hover .editIcon {
+  display: block;
+}
+
+.editIcon:hover {
+  background-color: #EAEDF0;
 }

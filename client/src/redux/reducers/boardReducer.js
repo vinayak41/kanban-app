@@ -5,6 +5,7 @@ import {
   UPDATE_CARD_POSITION,
   UPDATE_LIST_POSITION,
 } from "../actionTypeConstants/board";
+import { UPDATE_CARD } from "../actionTypeConstants/card";
 
 const initialState = null;
 
@@ -43,16 +44,14 @@ export default (state = initialState, action) => {
         lists:
           action.payload.sourceListId === action.payload.destinationListId
             ? state.lists.map((list) => {
-              console.log(list._id === action.payload.sourceListId)
                 return list._id === action.payload.sourceListId
                   ? {
                       ...list,
-                      cards: list.cards
-                        .map((card) =>
-                          card._id === cardToMove._id
-                            ? { ...card, position: action.payload.position }
-                            : card
-                        )
+                      cards: list.cards.map((card) =>
+                        card._id === cardToMove._id
+                          ? { ...card, position: action.payload.position }
+                          : card
+                      ),
                     }
                   : list;
               })
@@ -69,8 +68,25 @@ export default (state = initialState, action) => {
                   : list
               ),
       };
-
+    case UPDATE_CARD:
+      const listId = action.payload.listId;
+      const cardId = action.payload.id;
+      const title = action.payload.title;
+      return {
+        ...state,
+        lists: state.lists.map((list) =>
+          list._id === listId
+            ? {
+                ...list,
+                cards: list.cards.map((card) =>
+                  card._id === cardId ? { ...card, title: title } : card
+                ),
+              }
+            : list
+        ),
+      };
     default:
       return state;
   }
 };
+

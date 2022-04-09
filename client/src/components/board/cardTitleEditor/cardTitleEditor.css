@@ -1,0 +1,39 @@
+.editorContainer {
+  background-color: #0009;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.closeBtn {
+  background-color: transparent !important;
+  border: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.closeBtn:hover {
+  background-color: transparent !important;
+}
+
+.closeBtn svg {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.closeBtn>svg path {
+  stroke: white;
+}
+
+.wrapper {
+  position: absolute;
+  display: inline-block;
+}
+
+.editor {
+  min-width: 13.5rem;
+  margin-bottom: 1rem;
+}

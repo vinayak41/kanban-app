@@ -14,7 +14,6 @@ import {
 } from "../actionTypeConstants/board";
 
 export const createBoard = (boardData) => {
-  console.log(boardData);
   return {
     type: CREATE_BOARD,
     payload: boardData,

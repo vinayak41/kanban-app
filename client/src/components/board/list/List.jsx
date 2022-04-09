@@ -6,7 +6,6 @@ import { Draggable, Droppable } from "react-beautiful-dnd";
 import CardsContainer from "./CardsContainer";
 
 const List = ({ list, index }) => {
-  console.log(list.cards)
   return (
     <Draggable draggableId={list._id} index={index}>
       {(provided) => {

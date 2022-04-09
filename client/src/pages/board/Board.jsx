@@ -15,12 +15,16 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
 import { object_equals } from "../../utils/helper";
 import { comparePosition } from "../../utils/list";
+import CardTitleEditor from "../../components/board/cardTitleEditor/CardTitleEditor";
 
 const Board = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const board = useSelector((state) => state.board);
   const { Title } = Typography;
+
+  const { nameEditor } = useSelector((state) => state.card);
+
 
   //sort list and cards according position
   const lists = board?.lists
@@ -61,26 +65,21 @@ const Board = () => {
     let newPosition;
     if (destinationList.cards.length === 0) {
       //move card in empty list
-      console.log(1);
       newPosition = 1000;
     } else if (destination.index === 0) {
-      console.log(2);
       //move at position first in list
       newPosition = destinationList.cards[0].position / 2;
     } else if (destination.index >= destinationList.cards.length) {
-      console.log(3);
       //move at last position in list
       newPosition =
         destinationList.cards[destinationList.cards.length - 1].position + 100;
     } else {
-      console.log(4);
       //move card anywhere between first and last position
       newPosition =
         (destinationList.cards[destination.index].position +
           destinationList.cards[destination.index - 1].position) /
         2;
     }
-    console.log(newPosition);
     dispatch(
       updateCardPosition(
         draggableId,
@@ -106,60 +105,68 @@ const Board = () => {
   }, []);
 
   return (
-    <DragDropContext onDragEnd={handleDragEnd}>
-      {!board ? (
-        <div className="not-found">
-          <Title level={2}>Board not found.</Title>
-        </div>
-      ) : (
-        <div
-          className="board-container"
-          style={
-            board.background?.image
-              ? {
-                  backgroundImage: `url(${
-                    bgImages.find((image) => image.id == board.background.image)
-                      ?.src
-                  })`,
-                }
-              : { backgroundColor: board.background.color }
-          }
-        >
-          <Title className="board-title" level={2}>
-            {board.title}
-          </Title>
-          <Droppable droppableId="board" type="list" direction="horizontal">
-            {(provided) => {
-              return (
-                <>
-                  <div
-                    className="lists-container"
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}
-                  >
-                    {lists.map((list, index) => (
-                      <List key={list._id} list={list} index={index} />
-                    ))}
-                    {/* {provided.placeholder} */}
-                    <AddList
-                      boardId={params.boardId}
-                      //for first list position will be 1000
-                      //otherwise position for new list will be postion of previous list + 100
-                      position={
-                        !lists.length
-                          ? 1000
-                          : lists[lists.length - 1].position + 100
-                      }
-                    />
-                  </div>
-                  {provided.placeholder}
-                </>
-              );
-            }}
-          </Droppable>
-        </div>
-      )}
-    </DragDropContext>
+    <>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        {!board ? (
+          <div className="not-found">
+            <Title level={2}>Board not found.</Title>
+          </div>
+        ) : (
+          <div
+            className="board-container"
+            style={
+              board.background?.image
+                ? {
+                    backgroundImage: `url(${
+                      bgImages.find(
+                        (image) => image.id == board.background.image
+                      )?.src
+                    })`,
+                  }
+                : { backgroundColor: board.background.color }
+            }
+          >
+            <Title className="board-title" level={2}>
+              {board.title}
+            </Title>
+            <Droppable droppableId="board" type="list" direction="horizontal">
+              {(provided) => {
+                return (
+                  <>
+                    <div
+                      className="lists-container"
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                    >
+                      {lists.map((list, index) => (
+                        <List key={list._id} list={list} index={index} />
+                      ))}
+                      {/* {provided.placeholder} */}
+                      <AddList
+                        boardId={params.boardId}
+                        //for first list position will be 1000
+                        //otherwise position for new list will be postion of previous list + 100
+                        position={
+                          !lists.length
+                            ? 1000
+                            : lists[lists.length - 1].position + 100
+                        }
+                      />
+                    </div>
+                    {provided.placeholder}
+                  </>
+                );
+              }}
+            </Droppable>
+          </div>
+        )}
+      </DragDropContext>
+      <CardTitleEditor
+        isOpen={nameEditor.isOpen}
+        card={nameEditor.card}
+        position={nameEditor.position}
+      />
+    </>
   );
 };
 

@@ -19,7 +19,7 @@ const CardsContainer = ({ listId, cards, title }) => {
           >
             <Title level={5}>{title}</Title>
             {cards.map((card, index) => (
-              <Card key={card._id} card={card} index={index} />
+              <Card key={card._id} card={card} listId={listId} index={index} />
             ))}
           </div>
           {provided.placeholder}

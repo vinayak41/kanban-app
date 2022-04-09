@@ -19,7 +19,6 @@ import Board from "./pages/board/Board";
 const App = () => {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.user);
-  console.log("is auth in app", isAuthenticated);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("kanban-user"));
     if (user) {
@@ -27,7 +26,6 @@ const App = () => {
     } else {
       dispatch(loginFailed());
     }
-    console.log("app use effect");
   }, []);
 
   return (
