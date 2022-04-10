@@ -22,12 +22,25 @@ const createList = async (req, res, next) => {
 };
 
 const updateList = async (req, res, next) => {
+  const listId = req.params.listId;
+  const { position, title } = req.body;
   try {
-    const newList = await List.findByIdAndUpdate(
-      req.params.listId,
-      { $set: { position: req.body.position } },
-      { new: true }
-    );
+    let newList;
+    if (position) {
+      newList = await List.findByIdAndUpdate(
+        listId,
+        { $set: { position } },
+        { new: true }
+      );
+    }
+
+    if (title) {
+      newList = await List.findByIdAndUpdate(
+        listId,
+        { $set: { title } },
+        { new: true }
+      );
+    }
     res.json({ newList });
   } catch (error) {
     next(error);

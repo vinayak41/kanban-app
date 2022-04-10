@@ -11,6 +11,7 @@ import {
   SET_LIST,
   UPDATE_CARD_POSITION,
   UPDATE_LIST_POSITION,
+  UPDATE_LIST_TITLE,
 } from "../actionTypeConstants/board";
 
 export const createBoard = (boardData) => {
@@ -98,5 +99,12 @@ export const updateCardPosition = (
   return {
     type: UPDATE_CARD_POSITION,
     payload: { cardId, sourceListId, destinationListId, position },
+  };
+};
+
+export const updateListTitle = (data) => {
+  return {
+    type: UPDATE_LIST_TITLE,
+    payload: data,
   };
 };

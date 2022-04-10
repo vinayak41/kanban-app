@@ -4,6 +4,7 @@ import {
   SET_LIST,
   UPDATE_CARD_POSITION,
   UPDATE_LIST_POSITION,
+  UPDATE_LIST_TITLE,
 } from "../actionTypeConstants/board";
 import { UPDATE_CARD } from "../actionTypeConstants/card";
 
@@ -85,8 +86,16 @@ export default (state = initialState, action) => {
             : list
         ),
       };
+    case UPDATE_LIST_TITLE:
+      return {
+        ...state,
+        lists: state.lists.map((list) =>
+          list._id === action.payload.listId
+            ? { ...list, title: action.payload.title }
+            : list
+        ),
+      };
     default:
       return state;
   }
 };
-
