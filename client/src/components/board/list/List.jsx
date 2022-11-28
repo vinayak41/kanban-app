@@ -7,7 +7,7 @@ import CardsContainer from "./CardsContainer";
 
 const List = ({ list, index }) => {
   return (
-    <Draggable draggableId={list._id} index={index}>
+    <Draggable draggableId={list.id} index={index}>
       {(provided) => {
         return (
           <div
@@ -18,12 +18,12 @@ const List = ({ list, index }) => {
           >
             <CardsContainer
               title={list.title}
-              listId={list._id}
+              listId={list.id}
               cards={list.cards}
             />
 
             <AddCard
-              listId={list._id}
+              listId={list.id}
               //  postion for first card will be 1000
               //  otherwise it will be postion of previous card + 100
               position={

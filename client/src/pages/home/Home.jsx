@@ -30,7 +30,7 @@ const Home = () => {
       </Title>
       <div className="your-boards">
         {allBoards?.map((board) => (
-          <Link to={`/boards/${board._id}`} key={board._id}>
+          <Link to={`/boards/${board.id}`} key={board.id}>
             <div
               className="board"
               style={

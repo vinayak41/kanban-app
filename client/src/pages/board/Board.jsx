@@ -60,7 +60,7 @@ const Board = () => {
 
   const moveCard = (source, destination, draggableId) => {
     const destinationList = lists.find(
-      (list) => list._id === destination.droppableId
+      (list) => list.id === destination.droppableId
     );
     let newPosition;
     if (destinationList.cards.length === 0) {
@@ -139,7 +139,7 @@ const Board = () => {
                       ref={provided.innerRef}
                     >
                       {lists.map((list, index) => (
-                        <List key={list._id} list={list} index={index} />
+                        <List key={list.id} list={list} index={index} />
                       ))}
                       {/* {provided.placeholder} */}
                       <AddList

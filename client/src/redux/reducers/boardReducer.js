@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         lists: state.lists.map((list) =>
-          list._id === action.payload.list
+          list.id === action.payload.list
             ? { ...list, cards: [...list.cards, action.payload] }
             : list
         ),
@@ -29,15 +29,15 @@ export default (state = initialState, action) => {
       return {
         ...state,
         lists: state.lists.map((list) =>
-          list._id === action.payload.listId
+          list.id === action.payload.listId
             ? { ...list, position: action.payload.position }
             : list
         ),
       };
     case UPDATE_CARD_POSITION:
       let cardToMove = state.lists
-        .find((list) => list._id === action.payload.sourceListId)
-        .cards.find((card) => card._id === action.payload.cardId);
+        .find((list) => list.id === action.payload.sourceListId)
+        .cards.find((card) => card.id === action.payload.cardId);
       cardToMove.position = action.payload.position;
       //remove card from sourceList and push into destination list
       return {
@@ -45,11 +45,11 @@ export default (state = initialState, action) => {
         lists:
           action.payload.sourceListId === action.payload.destinationListId
             ? state.lists.map((list) => {
-                return list._id === action.payload.sourceListId
+                return list.id === action.payload.sourceListId
                   ? {
                       ...list,
                       cards: list.cards.map((card) =>
-                        card._id === cardToMove._id
+                        card.id === cardToMove.id
                           ? { ...card, position: action.payload.position }
                           : card
                       ),
@@ -57,14 +57,14 @@ export default (state = initialState, action) => {
                   : list;
               })
             : state.lists.map((list) =>
-                list._id === action.payload.sourceListId
+                list.id === action.payload.sourceListId
                   ? {
                       ...list,
                       cards: list.cards.filter(
-                        (card) => card._id !== action.payload.cardId
+                        (card) => card.id !== action.payload.cardId
                       ),
                     }
-                  : list._id === action.payload.destinationListId
+                  : list.id === action.payload.destinationListId
                   ? { ...list, cards: [...list.cards, cardToMove] }
                   : list
               ),
@@ -76,11 +76,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         lists: state.lists.map((list) =>
-          list._id === listId
+          list.id === listId
             ? {
                 ...list,
                 cards: list.cards.map((card) =>
-                  card._id === cardId ? { ...card, title: title } : card
+                  card.id === cardId ? { ...card, title: title } : card
                 ),
               }
             : list
@@ -90,7 +90,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         lists: state.lists.map((list) =>
-          list._id === action.payload.listId
+          list.id === action.payload.listId
             ? { ...list, title: action.payload.title }
             : list
         ),

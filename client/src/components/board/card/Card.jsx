@@ -13,13 +13,13 @@ const Card = ({ card, index, listId }) => {
     const { left, top } = cardRef.current.getBoundingClientRect();
     dispatch(
       openNameEditor({
-        card: { title: card.title, id: card._id, listId: listId },
+        card: { title: card.title, id: card.id, listId: listId },
         position: { top, left },
       })
     );
   };
   return (
-    <Draggable draggableId={card._id} index={index}>
+    <Draggable draggableId={card.id} index={index}>
       {(provided) => {
         return (
           <div

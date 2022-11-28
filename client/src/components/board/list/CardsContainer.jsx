@@ -42,7 +42,7 @@ const CardsContainer = ({ listId, cards, title }) => {
               />
               {cards.map((card, index) => (
                 <Card
-                  key={card._id}
+                  key={card.id}
                   card={card}
                   listId={listId}
                   index={index}
