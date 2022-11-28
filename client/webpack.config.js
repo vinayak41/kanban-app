@@ -7,10 +7,20 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     publicPath: "/",
-    filename: "bundle.js",
+    filename: '[name].bundle.js',
   },
   resolve: {
     extensions: [".js", ".jsx", "css", "scss"],
+    modules: ['src', 'node_modules'],
+    alias: {
+      "@components": path.resolve(__dirname, "/src/components/"),
+      "@sass": path.resolve(__dirname, "/src/sass/"),
+      "@assets": path.resolve(__dirname, "/src/assets/"),
+      "@hooks": path.resolve(__dirname, "/src/hooks/"),
+      "@utils": path.resolve(__dirname, "/src/utils/"),
+      "@utils": path.resolve(__dirname, "/src/utils/"),
+      "@redux": path.resolve(__dirname, "/src/redux/"),
+    },
   },
   module: {
     rules: [
