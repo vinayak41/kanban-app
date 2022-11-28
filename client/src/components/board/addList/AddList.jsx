@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./addList.css";
 import { IoMdAdd } from "react-icons/io";
 import { Input, Button } from "antd";
-import { CgClose } from "react-icons/CG";
+import { CgClose } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import { createList } from "../../../redux/actions/boardActions";
 

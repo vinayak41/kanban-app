@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { Input, Button } from "antd";
-import { CgClose } from "react-icons/CG";
+import { CgClose } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import "./addCard.css";
 import { createCard } from "../../../redux/actions/boardActions";
