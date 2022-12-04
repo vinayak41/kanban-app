@@ -45,6 +45,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: false,
+        error: action.payload?.message || false
       };
     default:
       return state;

@@ -23,7 +23,7 @@ function* login(action) {
     localStorage.setItem("kanban-user", JSON.stringify(response.data));
   } catch (error) {
     if (error.response?.data?.message) {
-      yield put(loginFailed(error.response.data.message));
+      yield put(loginFailed({message: error.response.data.message}));
     } else {
       yield put(loginFailed("login failed"));
     }

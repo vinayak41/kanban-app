@@ -1,12 +1,15 @@
 import React from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, Alert } from "antd";
 import "./signup.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signupRequest } from "../../redux/actions/userActions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Signup = () => {
   const dispatch = useDispatch();
+  const { error, registred } = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     dispatch(signupRequest(values));
@@ -15,6 +18,9 @@ const Signup = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  useEffect(() => {
+    if (registred) navigate("/");
+  }, [registred]);
   return (
     <div className="signup-container">
       <Form
@@ -33,6 +39,14 @@ const Signup = () => {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
+        {error ? (
+          <Alert
+            style={{ marginBottom: "1rem" }}
+            message={error}
+            type="error"
+            showIcon
+          />
+        ) : null}
         <Form.Item
           label="Full name"
           name="fullname"
