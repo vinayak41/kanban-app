@@ -16,6 +16,7 @@ import { Droppable } from "react-beautiful-dnd";
 import { object_equals } from "../../utils/helper";
 import { comparePosition } from "../../utils/list";
 import CardTitleEditor from "../../components/board/cardTitleEditor/CardTitleEditor";
+import Loading from "@components/Loading";
 
 const Board = () => {
   const params = useParams();
@@ -24,7 +25,6 @@ const Board = () => {
   const { Title } = Typography;
 
   const { nameEditor } = useSelector((state) => state.card);
-
 
   //sort list and cards according position
   const lists = board?.lists
@@ -108,9 +108,7 @@ const Board = () => {
     <>
       <DragDropContext onDragEnd={handleDragEnd}>
         {!board ? (
-          <div className="not-found">
-            <Title level={2}>Board not found.</Title>
-          </div>
+          <Loading />
         ) : (
           <div
             className="board-container"
