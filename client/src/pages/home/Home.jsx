@@ -1,26 +1,40 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Typography } from "antd";
+import { Button, Typography } from "antd";
 import "./home.css";
-import { generateGreetings } from "../../utils/helper";
+import { deleteToken, generateGreetings } from "../../utils/helper";
 import CreateNewBoard from "../../components/createNewBoard/CreateNewBoard";
 import { getAllBoards } from "../../redux/actions/boardActions";
 import bgImages from "../../assets/backgroundImages/bgImages";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { Title, Paragraph } = Typography;
   const { fullname } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const allBoards = useSelector((state) => state.boards);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllBoards());
   }, []);
 
+  const handleLogout = () => {
+    deleteToken();
+    navigate(0);
+  };
+
   return (
     <div className="home-container">
-      <Title type="h1">Kanban</Title>
+      <Button
+        onClick={handleLogout}
+        className="logout_button"
+        type="primary"
+        size="small"
+      >
+        Logout
+      </Button>
+      <Title type="h1">Kanban </Title>
       <Paragraph>{`${generateGreetings()} ${
         fullname?.split(" ")[0]
       }!`}</Paragraph>

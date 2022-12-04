@@ -22,6 +22,10 @@ export const getToken = () => {
   return JSON.parse(localStorage.getItem("kanban-user"))?.token;
 };
 
+export const deleteToken = () => {
+  localStorage.removeItem("kanban-user")
+}
+
 // compare two objects
 export const object_equals = (x, y) => {
   if (x === y) return true;
