@@ -72,20 +72,16 @@ export default (state = initialState, action) => {
     case UPDATE_CARD:
       const listId = action.payload.listId;
       const cardId = action.payload.id;
-      const title = action.payload.title;
       return {
         ...state,
-        lists: state.lists.map((list) =>
-          list.id === listId
-            ? {
-                ...list,
-                cards: list.cards.map((card) =>
-                  card.id === cardId ? { ...card, title: title } : card
-                ),
-              }
-            : list
-        ),
+        lists: state.lists.map((list) => ({
+          ...list,
+          cards: list.cards.map((card) =>
+            card.id === cardId ? { ...card, ...action.payload } : card
+          ),
+        })),
       };
+
     case UPDATE_LIST_TITLE:
       return {
         ...state,

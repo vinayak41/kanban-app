@@ -32,7 +32,7 @@ const getBoard = async (req, res, next) => {
     }
     const board = await Board.findById(ObjectId(req.params.boardId)).populate({
       path: "lists",
-      populate: { path: "cards" },
+      populate: { path: "cards", select: { description: 0 } },
     });
     if (board) {
       return res.json(board);

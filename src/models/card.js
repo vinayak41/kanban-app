@@ -7,7 +7,9 @@ const cardSchema = new mongoose.Schema({
   },
   position: { type: Number, required: true },
   list: { type: mongoose.Schema.Types.ObjectId, ref: "List", required: true },
+  description: { type: String },
 });
+
 
 cardSchema.set("toJSON", {
   transform: (document, returnedObject) => {

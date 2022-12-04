@@ -1,6 +1,7 @@
 import {
   CLOSE_CARD_NAME_EDITOR,
   OPEN_CARD_NAME_EDITOR,
+  UPDATE_CARD,
 } from "../actionTypeConstants/card";
 
 const initialState = {

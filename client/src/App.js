@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Outlet,
+  useLocation,
 } from "react-router-dom";
 import Login from "./pages/login/Login";
 import "../node_modules/antd/dist/antd.css";
@@ -15,10 +16,13 @@ import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import "./app.css";
 import Board from "./pages/board/Board";
+import CardDetail from "@components/board/CardDetail";
 
 const App = () => {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.user);
+  const location = useLocation();
+  let background = location.state && location.state.background;
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("kanban-user"));
     if (user) {
@@ -28,32 +32,34 @@ const App = () => {
     }
   }, []);
 
+  console.log(location.state);
+
   return (
     <div>
-      <Router>
+      <Routes location={background || location}>
+        <Route path="/" exact element={<PrivateRoute component={Outlet} />}>
+          <Route path="/" element={<Home />} />
+          <Route path="boards/:boardId" element={<Board />} />
+          <Route path="boards/:boardId/:cardId" element={<CardDetail />} />
+        </Route>
+        <Route
+          path="/login"
+          element={
+            <PublicRoute path="/login" restricted={true} component={Login} />
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute path="/signup" restricted={true} component={Signup} />
+          }
+        />
+      </Routes>
+      {background && (
         <Routes>
-          <Route path="/" exact element={<PrivateRoute component={Outlet} />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/boards/:boardId" element={<Board />} />
-          </Route>
-          <Route
-            path="/login"
-            element={
-              <PublicRoute path="/login" restricted={true} component={Login} />
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <PublicRoute
-                path="/signup"
-                restricted={true}
-                component={Signup}
-              />
-            }
-          />
+          <Route path="boards/:boardId/:cardId" element={<CardDetail />} />
         </Routes>
-      </Router>
+      )}
     </div>
   );
 };

@@ -146,9 +146,7 @@ function* updateCard(action) {
     const response = yield call(axios, {
       method: "PATCH",
       url: `${CARD_API}/${action.payload.id}`,
-      data: {
-        title: action.payload.title,
-      },
+      data: action.payload,
       headers: {
         authorization: `Bearer ${token}`,
       },
@@ -185,5 +183,5 @@ export default function* boardSaga() {
   yield takeEvery(UPDATE_LIST_POSITION, updateListPosition);
   yield takeEvery(UPDATE_CARD_POSITION, updateCardPosition);
   yield takeEvery(UPDATE_CARD, updateCard);
-  yield takeEvery(UPDATE_LIST_TITLE, updateList)
+  yield takeEvery(UPDATE_LIST_TITLE, updateList);
 }

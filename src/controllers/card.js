@@ -1,6 +1,16 @@
 const Card = require("../models/card");
 const List = require("../models/list");
 
+const getCard = async (req, res, next) => {
+  try {
+    const { cardId } = req.params;
+    const card = await Card.findById(cardId).populate("list", { title: 1 });
+    return res.json(card);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const createCard = async (req, res, next) => {
   try {
     const newCard = new Card({
@@ -26,30 +36,32 @@ const updateCard = async (req, res, next) => {
     const cardId = req.params.cardId;
     const sourceListId = req.body.sourceListId;
     const destinationListId = req.body.destinationListId;
-    const { position, title } = req.body;
+    const { position } = req.body;
+
+    console.log(req.body);
+
+    const updatedCard = await Card.findByIdAndUpdate(
+      cardId,
+      {
+        $set: {
+          ...req.body,
+          list: destinationListId,
+        },
+      },
+      { new: true }
+    );
 
     if (position) {
-      await Card.findByIdAndUpdate(cardId, {
-        $set: { position: position, list: destinationListId },
-      });
-
       await List.findByIdAndUpdate(sourceListId, { $pull: { cards: cardId } });
-
       await List.findByIdAndUpdate(destinationListId, {
         $push: { cards: cardId },
       });
     }
 
-    if (title) {
-      await Card.findByIdAndUpdate(cardId, {
-        $set: { title: title },
-      });
-    }
-
-    res.json({ message: "ok" });
+    res.json({ message: "ok", data: updatedCard });
   } catch (error) {
     console.log(error);
   }
 };
 
-module.exports = { createCard, updateCard };
+module.exports = { getCard, createCard, updateCard };

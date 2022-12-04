@@ -4,7 +4,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
-      "@services/*": ["services/*"],
+      "@services/*": ["src/services/*"],
       "@sass/*": ["sass/*"],
       "@assets/*": ["assets/*"],
       "@redux/*": ["redux/*"],

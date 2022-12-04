@@ -30,3 +30,11 @@
 .editIcon:hover {
   background-color: #EAEDF0;
 }
+
+.link {
+  color: inherit;
+}
+
+.link:hover {
+  color: inherit;
+}
